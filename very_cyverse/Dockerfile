@@ -144,6 +144,6 @@ RUN sudo ln -s /opt/conda/pkgs/*/lib/* /usr/lib; exit 0
 
 COPY ./entry.sh /bin/entry.sh
 
-COPY ./Persistence_Notebook-kb.ipynb /home/gea_user/Persistence_Notebook-kb.ipynb
+COPY ./Persistence_Notebook-KB.ipynb /home/gea_user/Persistence_Notebook-KB.ipynb
 
 ENTRYPOINT ["bash", "/bin/entry.sh"]

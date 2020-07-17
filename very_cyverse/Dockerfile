@@ -5,7 +5,7 @@ COPY jupyter_notebook_config.json /opt/conda/etc/jupyter/jupyter_notebook_config
 LABEL maintainer="Kayla Bieser"
 LABEL maintainer_email="kayla.bieser@nsc.edu"
 LABEL version="1.0"
-LABEL BIOL416
+LABEL lesson=biol416
 #
 #
 #
@@ -121,8 +121,6 @@ RUN useradd -p $(openssl passwd -1 -salt xyz 'gea_user') -m -d /home/gea_user -s
 RUN usermod -a -G sudo,root gea_user
 RUN echo "gea_user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 #
-#hostname while root
-#hostname -b ${IPLANT_USER}"-cyverse"
 #
 # Switch to GEA user
 COPY ./jupyter_notebook_config.json /opt/conda/etc/jupyter/jupyter_notebook_config.json
@@ -142,8 +140,8 @@ RUN sudo ln -s /opt/conda/pkgs/*/lib/* /usr/lib; exit 0
 #ENTRYPOINT ["jupyter"]
 #CMD ["lab", "--no-browser", "--ip=0.0.0.0", "--NotebookApp.token=''", "--NotebookApp.password=''", "--notebook-dir='/home/gea_user'", "--Session.username='gea_user'"]
 
-COPY ./entry.sh /bin/entry.sh
+COPY entry.sh /bin
 
-COPY ./Persistence_Notebook-KB.ipynb /home/gea_user/Persistence_Notebook-KB.ipynb
+COPY Persistence_Notebook-KB.ipynb /home/gea_user
 
 ENTRYPOINT ["bash", "/bin/entry.sh"]

@@ -125,10 +125,10 @@ RUN echo "gea_user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 # Switch to GEA user
 COPY ./jupyter_notebook_config.json /opt/conda/etc/jupyter/jupyter_notebook_config.json
 COPY ./jupyter_notebook_config.py /home/gea_user/.jupyter/jupyter_notebook_config.py
-#COPY ./.bashrc /home/gea_user/.bashrc
+COPY ./.bashrc /home/gea_user/.bashrc
 RUN chown -R gea_user:gea_user /home/gea_user/.jupyter
 RUN chmod -R 777 /home/jovyan
-#RUN chown gea_user:gea_user /home/gea_user/.bashrc
+RUN chown gea_user:gea_user /home/gea_user/.bashrc
 USER gea_user
 #
 #
@@ -140,8 +140,8 @@ RUN sudo ln -s /opt/conda/pkgs/*/lib/* /usr/lib; exit 0
 #ENTRYPOINT ["jupyter"]
 #CMD ["lab", "--no-browser", "--ip=0.0.0.0", "--NotebookApp.token=''", "--NotebookApp.password=''", "--notebook-dir='/home/gea_user'", "--Session.username='gea_user'"]
 
-COPY entry.sh /bin
+COPY ./entry.sh /bin
 
-COPY Persistence_Notebook-KB.ipynb /home/gea_user/
+COPY ./Persistence_Notebook-KB.ipynb /home/gea_user/
 
 ENTRYPOINT ["bash", "/bin/entry.sh"]

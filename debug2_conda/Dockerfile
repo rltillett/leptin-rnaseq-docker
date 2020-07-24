@@ -53,7 +53,7 @@ RUN pip install jupyterlab_irods==3.0.2 \
 # install jupyterlab hub-extension, lab-manager, bokeh
 RUN jupyter lab --version \
     && jupyter labextension install @jupyterlab/hub-extension \
-                                    @jupyter-widgets/jupyterlab-manager 
+                                    @jupyter-widgets/jupyterlab-manager
 
 #
 #
@@ -87,7 +87,7 @@ RUN conda install -y -q sra-tools=2.9.6=hf484d3e_0
 RUN conda install -y -q bwa=0.7.17=hed695b0_7
 RUN conda install -y -q samtools=1.9=h10a08f8_12
 RUN conda install -y -q bcftools=1.8=h4da6232_3
-RUN conda install -y -q snpeff=4.3.1t=2 
+RUN conda install -y -q snpeff=4.3.1t=2
 RUN conda install -y -q seqtk=1.3=hed695b0_2
 RUN conda install -y -q snpsift=4.3.1t=2
 #
@@ -130,6 +130,9 @@ RUN chown -R gea_user:gea_user /home/gea_user/.jupyter
 RUN chmod -R 777 /home/jovyan
 #RUN chown gea_user:gea_user /home/gea_user/.bashrc
 USER gea_user
+#
+RUN export HOME=/home/gea_user
+#
 #
 #
 # Link conda executables to /bin and /usr/lib

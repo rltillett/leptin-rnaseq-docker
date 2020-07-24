@@ -2,10 +2,10 @@ FROM jupyter/datascience-notebook:ubuntu-18.04
 COPY jupyter_notebook_config.json /opt/conda/etc/jupyter/jupyter_notebook_config.json
 
 # Maintained by
-LABEL maintainer="Genomics Education Alliance"
-LABEL maintainer_email="genomicseducationalliance@gmail.com"
+LABEL maintainer="Kayla Bieser"
+LABEL maintainer_email="kayla.bieser@nsc.edu"
 LABEL version="1.0"
-LABEL lesson=leptin-mouse-rnaseq
+LABEL lesson=DC_BIOL_416
 #
 #
 #

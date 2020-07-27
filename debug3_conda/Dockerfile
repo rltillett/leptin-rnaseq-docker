@@ -126,9 +126,9 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh && echo "SHELL=/bin/bash" >> /etc/envi
 COPY ./jupyter_notebook_config.json /opt/conda/etc/jupyter/jupyter_notebook_config.json
 COPY ./jupyter_notebook_config.py /home/jovyan/.jupyter/jupyter_notebook_config.py
 #COPY ./.bashrc /home/jovyan/.bashrc
-RUN chown -R jovyan:jovyan /home/jovyan/.jupyter
+RUN chown -R jovyan:users /home/jovyan/.jupyter
 RUN chmod -R 777 /home/jovyan
-#RUN chown jovyan:jovyan /home/jovyan/.bashrc
+#RUN chown jovyan:users /home/jovyan/.bashrc
 USER jovyan
 #
 #

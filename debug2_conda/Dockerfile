@@ -131,7 +131,6 @@ RUN chmod -R 777 /home/jovyan
 #RUN chown gea_user:gea_user /home/gea_user/.bashrc
 USER gea_user
 #
-RUN export HOME=/home/gea_user
 #
 #
 #

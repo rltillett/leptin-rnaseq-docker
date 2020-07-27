@@ -140,7 +140,7 @@ RUN sudo ln -s /opt/conda/pkgs/*/lib/* /usr/lib; exit 0
 #ENTRYPOINT ["jupyter"]
 #CMD ["lab", "--no-browser", "--ip=0.0.0.0", "--NotebookApp.token=''", "--NotebookApp.password=''", "--notebook-dir='/home/gea_user'", "--Session.username='gea_user'"]
 
-COPY ./entry.sh /bin
+COPY entry.sh /bin
 
 #COPY ./Persistence_Notebook-KB.ipynb /home/gea_user/
 

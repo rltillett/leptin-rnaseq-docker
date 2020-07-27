@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 HOME=/home/gea_user

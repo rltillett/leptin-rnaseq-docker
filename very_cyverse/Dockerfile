@@ -1,6 +1,6 @@
 FROM jupyter/datascience-notebook:ubuntu-18.04
 COPY jupyter_notebook_config.json /opt/conda/etc/jupyter/jupyter_notebook_config.json
-
+#
 # Maintained by
 LABEL maintainer="Kayla Bieser"
 LABEL maintainer_email="kayla.bieser@nsc.edu"
@@ -54,7 +54,7 @@ RUN pip install jupyterlab_irods==3.0.2 \
 RUN jupyter lab --version \
     && jupyter labextension install @jupyterlab/hub-extension \
                                     @jupyter-widgets/jupyterlab-manager
-
+#
 #
 #
 # install jupyterlab git extension
@@ -108,7 +108,7 @@ RUN npm config set user 0 \
  $$ npm install zeromq \
  && npm config set unsafe-perm true \
  && npm install ijavascript -g
-
+#
 RUN ijsinstall --hide-undefined --install=global
 #
 #
@@ -125,7 +125,7 @@ RUN echo "gea_user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 # Switch to GEA user
 COPY ./jupyter_notebook_config.json /opt/conda/etc/jupyter/jupyter_notebook_config.json
 COPY ./jupyter_notebook_config.py /home/gea_user/.jupyter/jupyter_notebook_config.py
-COPY ~/.bashrc /home/gea_user/.bashrc
+COPY ./.bashrc /home/gea_user/.bashrc
 RUN chown -R gea_user:gea_user /home/gea_user/.jupyter
 RUN chmod -R 777 /home/jovyan
 RUN chown gea_user:gea_user /home/gea_user/.bashrc
@@ -139,9 +139,9 @@ RUN sudo ln -s /opt/conda/pkgs/*/lib/* /usr/lib; exit 0
 # Define entry point and startup commands
 #ENTRYPOINT ["jupyter"]
 #CMD ["lab", "--no-browser", "--ip=0.0.0.0", "--NotebookApp.token=''", "--NotebookApp.password=''", "--notebook-dir='/home/gea_user'", "--Session.username='gea_user'"]
-
-COPY entry.sh /bin
-
+#
+COPY ./entry.sh /bin
+#
 #COPY ./Persistence_Notebook-KB.ipynb /home/gea_user/
-
+#
 ENTRYPOINT ["bash", "/bin/entry.sh"]

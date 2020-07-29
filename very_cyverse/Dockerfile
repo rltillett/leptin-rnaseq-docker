@@ -126,9 +126,12 @@ RUN echo "gea_user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 COPY ./jupyter_notebook_config.json /opt/conda/etc/jupyter/jupyter_notebook_config.json
 COPY ./jupyter_notebook_config.py /home/gea_user/.jupyter/jupyter_notebook_config.py
 COPY ./.bashrc /home/gea_user/.bashrc
+COPY ./.bash_profile /home/gea_user/.bash_profile
 RUN chown -R gea_user:gea_user /home/gea_user/.jupyter
 RUN chmod -R 777 /home/jovyan
 RUN chown gea_user:gea_user /home/gea_user/.bashrc
+RUN chown gea_user:gea_user /home/gea_user/.bash_profile
+
 USER gea_user
 #
 #
